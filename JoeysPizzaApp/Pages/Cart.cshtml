@@ -16,7 +16,7 @@
         <table border="1" class="table table-bordered" width="100%">
             <tr >
                 <th style="text-align:center">Action</th>
-                <th style="text-align:center">Id</th>
+                @*<th style="text-align:center">Id</th>*@
                 <th style="text-align:center">Name</th>
                 <th style="text-align:center">Photo</th>
                 <th style="text-align:center">Price</th>
@@ -27,9 +27,9 @@
             {
                 <tr align="center">
                     <td align="center">
-                        <a asp-page="cart" asp-page-handler="delete" asp-route-id="@item.Pizza.Id">X</a>
+                        <a asp-page="cart" asp-page-handler="delete" asp-route-id="@item.Pizza.Id">Cancel</a>
                     </td>
-                    <td>@item.Pizza.Id</td>
+                    @*<td>@item.Pizza.Id</td>*@
                     <td>@item.Pizza.Name</td>
                     <td><img src="~/images/@item.Pizza.Photo" width="120" height="100" /></td>
                     <td>$@item.Pizza.Price</td>
@@ -45,8 +45,8 @@
             </tr>
         </table>
     </form>
-    <a class="btn btn-primary" asp-page="index">Continue Shopping</a>
-    <a class="btn btn-primary" asp-page="CheckOut">Checkout</a>
+    <a id="cs"class="btn btn-primary" asp-page="index">Continue Shopping</a>
+    <a id="co "class="btn btn-primary" asp-page="CheckOut">Checkout</a>
 
 
 </body>
