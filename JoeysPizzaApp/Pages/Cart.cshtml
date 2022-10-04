@@ -1,0 +1,53 @@
+﻿@page
+@model JoeysPizzaApp.Pages.CartModel
+@{
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cart</title>
+</head>
+<body>
+
+    <h3>Cart</h3>
+    <form method="post" asp-page="cart" asp-page-handler="update">
+        <table border="1" class="table table-bordered" width="100%">
+            <tr >
+                <th style="text-align:center">Action</th>
+                <th style="text-align:center">Id</th>
+                <th style="text-align:center">Name</th>
+                <th style="text-align:center">Photo</th>
+                <th style="text-align:center">Price</th>
+                <th style="text-align:center">Quantity <input class="btn btn-primary"type="submit" value="Update" /></th>
+                <th>Sub Total</th>
+            </tr>
+            @foreach (var item in Model.cart)
+            {
+                <tr align="center">
+                    <td align="center">
+                        <a asp-page="cart" asp-page-handler="delete" asp-route-id="@item.Pizza.Id">X</a>
+                    </td>
+                    <td>@item.Pizza.Id</td>
+                    <td>@item.Pizza.Name</td>
+                    <td><img src="~/images/@item.Pizza.Photo" width="120" height="100" /></td>
+                    <td>$@item.Pizza.Price</td>
+                    <td><input type="number" name="quantities" value="@item.Quantity" min="1" style="width: 50px;" /></td>
+                    <td>
+                        $@(item.Pizza.Price * item.Quantity)
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="6" align="right">Total</td>
+                <td align="center">$@Model.Total</td>
+            </tr>
+        </table>
+    </form>
+    <a class="btn btn-primary" asp-page="index">Continue Shopping</a>
+    <a class="btn btn-primary" asp-page="CheckOut">Checkout</a>
+
+
+</body>
+</html>
